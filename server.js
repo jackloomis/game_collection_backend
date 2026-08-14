@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 
 const gamesRoutes = require("./src/game_collection/routes");
 
@@ -7,8 +8,6 @@ const app = express();
 const port = 8003;
 
 app.use(express.json());
-
-const cors = require("cors");
 app.use(cors({
     origin: '*'
 }));
