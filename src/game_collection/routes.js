@@ -5,5 +5,6 @@ const router = Router();
 
 router.get('/', controller.getGames);
 router.get('/id/:id', controller.getGamesById);
+router.post('/', controller.addNewGame);
 
 module.exports = router;
