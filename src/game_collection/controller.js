@@ -35,7 +35,7 @@ const addNewGame = (req, res) => {
     const status_id = req.body.status_id;
     const rating = req.body.rating;
 
-    pool.query(queries.addNewGame, [title, system_id, status_id], (error, results) => {
+    pool.query(queries.addNewGame, [title, genre, system_id, status_id, rating], (error, results) => {
         if (error) {
             console.error("Database Error", error);
             return res.status(500).json({error: "Adding game failed"});
