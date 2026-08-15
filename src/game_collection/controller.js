@@ -30,8 +30,10 @@ const getGamesById = (req, res) => {
 // Controller: add new game
 const addNewGame = (req, res) => {
     const title = req.body.title;
+    const genre = req.body.genre;
     const system_id = req.body.system_id;
     const status_id = req.body.status_id;
+    const rating = req.body.rating;
 
     pool.query(queries.addNewGame, [title, system_id, status_id], (error, results) => {
         if (error) {
