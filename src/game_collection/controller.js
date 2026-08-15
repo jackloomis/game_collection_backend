@@ -11,7 +11,7 @@ const getGames = (req, res) => {
 
 // Controller: filters by game id
 const getGamesById = (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     if (isNaN(id)) {
         return res.status(400).json({error: "Invalid value format"});
@@ -42,8 +42,31 @@ const addNewGame = (req, res) => {
     });
 };
 
+// Controller: modify game details
+const updateGame = (req, res) => {
+    const id = parseInt(req.params.id);
+    const title = req.body.title;
+    const genre = req.body.genre;
+    const system_id = req.body.system_id;
+    const status_id = req.body.status_id;
+    const rating = req.body.rating;
+
+    if (isNaN(id)) {
+        return res.status(400).json({error: "Invalid ID format"});
+    }
+
+    pool.query(queries.updateGame, [title, genre, system_id, status_id, rating, id], (error, results) => {
+        if (error) {
+            console.error("Database Error", error);
+            return res.status(500).json({error: "Updating game failed"});
+        }
+        res.status(200).json(results.rows);
+    });
+};
+
 module.exports = {
     getGames,
     getGamesById,
     addNewGame,
+    updateGame,
 };
