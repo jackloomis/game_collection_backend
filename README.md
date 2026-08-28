@@ -11,7 +11,7 @@
 - [License](#license)
 
 ## Project Overview
-Project backend consists of a REST API which accesses A PostgreSQL database containing the user's video game collection.
+Project backend consists of a REST API which accesses a PostgreSQL database containing the user's video game collection.
 The API enables retrieving, adding, and modifying game information.
 
 ### Required Technologies
